@@ -4,8 +4,15 @@ import "./style.css";
 import "./assets/img/4geeks.ico";
 
 window.onload = function() {
-  const cards = new Array(52);
-  for (let i = 0; i < cards.length; i++) {
-    cards[i] = i;
-  }
+  var result = [],
+    matches = document.querySelectorAll("#vCard .card");
+  for (var i = 0, l = matches.length; i < l; i++)
+    result.push(matches[i].outerHTML);
+
+  let btn = document.getElementById("deck");
+
+  btn.addEventListener("click", function() {
+    document.getElementById("deck").innerHTML =
+      result[Math.floor(Math.random() * result.length)];
+  });
 };
